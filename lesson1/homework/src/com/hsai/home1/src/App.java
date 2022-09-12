@@ -1,38 +1,39 @@
 import inOut.IOUtils;
-import insertSort.insert_Sort;
-import SelecrionSort.SelecrionSort;
-import MergeSort.MergeSort;
-import QuickSort.QuickSort;
-import java.time.Instant;
+import alghorithm.MergeSort;
+import alghorithm.QuickSort;
+import alghorithm.SelecrionSort;
+import alghorithm.insert_Sort;
+
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Scanner in = new Scanner(System.in);
-        var BaseArray = IOUtils.toIntArray(in.nextLine().split(""));
-        var SortNumber = BaseArray[0];
-        int[] ArrForSort=Arrays.copyOfRange(BaseArray,1,BaseArray.length);
-        switch (SortNumber){
+        var base_array = IOUtils.toIntArray(args);
+        var sort_number = base_array[0];
+        int[] аrr_for_sort = Arrays.copyOfRange(base_array, 1, base_array.length);
+        while (sort_number<0){
+            sort_number+=4;
+        }
+        while (sort_number>3){
+            sort_number-=4;
+        }
+        switch (sort_number) {
+            case 0:
+                insert_Sort.insertionSort(аrr_for_sort);
+                break;
             case 1:
-                insert_Sort.insertionSort(ArrForSort);    
+                SelecrionSort.SelecrionSort(аrr_for_sort);
                 break;
             case 2:
-                SelecrionSort.SelecrionSort(ArrForSort);
+                MergeSort.MergeSort(аrr_for_sort, аrr_for_sort.length);
                 break;
             case 3:
-                MergeSort.MergeSort(ArrForSort,ArrForSort.length);
-                break;
-            case 4:
-                QuickSort.quickSort(ArrForSort,0,ArrForSort.length-1);
+                QuickSort.quickSort(аrr_for_sort, 0, аrr_for_sort.length - 1);
                 break;
             default:
-            break;
+                break;
         }
-        Instant endExclusive=Instant.now();  
-        String EasyMenu[] = {"Insert Sort","Selecrion Sort","Merge Sort","Quick Sort",};
-        in.close();
-        IOUtils.writeOutput(EasyMenu[SortNumber-1], ArrForSort);
-
+        String EasyMenu[] = { "Insert Sort", "Selecrion Sort", "Merge Sort", "Quick Sort" };
+        IOUtils.writeOutput(EasyMenu[sort_number], аrr_for_sort);
     }
 }
