@@ -3,7 +3,6 @@ import insertSort.insert_Sort;
 import SelecrionSort.SelecrionSort;
 import MergeSort.MergeSort;
 import QuickSort.QuickSort;
-import java.time.Duration;
 import java.time.Instant;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -14,8 +13,6 @@ public class App {
         var BaseArray = IOUtils.toIntArray(in.nextLine().split(""));
         var SortNumber = BaseArray[0];
         int[] ArrForSort=Arrays.copyOfRange(BaseArray,1,BaseArray.length);
-        Instant startInclusive= Instant.now();
-        long elapsed;
         switch (SortNumber){
             case 1:
                 insert_Sort.insertionSort(ArrForSort);    
@@ -36,8 +33,6 @@ public class App {
         String EasyMenu[] = {"Insert Sort","Selecrion Sort","Merge Sort","Quick Sort",};
         in.close();
         IOUtils.writeOutput(EasyMenu[SortNumber-1], ArrForSort);
-        elapsed=Duration.between(startInclusive, endExclusive).toMillis();
-        System.out.println("Время выполнения сортировки, мс: " + elapsed);
 
     }
 }
