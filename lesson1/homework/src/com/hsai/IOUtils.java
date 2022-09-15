@@ -10,6 +10,7 @@ public class IOUtils {
         return Stream.of(args)
                 .mapToInt(Integer::parseInt)
                 .toArray();
+
     }
 
     public static void writeOutput(String algorithmName, int[] array) {
