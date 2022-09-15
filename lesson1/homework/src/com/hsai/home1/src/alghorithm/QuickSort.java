@@ -26,7 +26,6 @@ public class QuickSort {
   public static void QuickSort(int[] arr, int begin, int end) {
     if (begin < end) {
       int partitionIndex = partition(arr, begin, end);
-
       QuickSort(arr, begin, partitionIndex - 1);
       QuickSort(arr, partitionIndex + 1, end);
     }
