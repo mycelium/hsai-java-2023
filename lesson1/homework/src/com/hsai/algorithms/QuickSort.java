@@ -2,14 +2,7 @@ package lesson1.homework.src.com.hsai.algorithms;
 
 import java.util.Collection;
 
-public class QuickSort implements SortingAlgorithm {
-
-    @Override
-    public Collection<Integer> sort(Integer[] ) {
-        Integer[] arr = (Integer[]) sourceCollection.toArray;
-        quickSort(arr, 0, sourceCollection.size() - 1);
-        return arr;
-    }
+public class QuickSort {
 
     // A utility function to swap two elements
     static void swap(int[] arr, int i, int j)
@@ -58,7 +51,7 @@ public class QuickSort implements SortingAlgorithm {
               low --> Starting index,
               high --> Ending index
      */
-    static void quickSort(Integer[] arr, int low, int high)
+    public static void sort(int[] arr, int low, int high)
     {
         if (low < high)
         {
@@ -69,8 +62,8 @@ public class QuickSort implements SortingAlgorithm {
 
             // Separately sort elements before
             // partition and after partition
-            quickSort(arr, low, pi - 1);
-            quickSort(arr, pi + 1, high);
+            sort(arr, low, pi - 1);
+            sort(arr, pi + 1, high);
         }
     }
 }

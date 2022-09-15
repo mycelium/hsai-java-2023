@@ -1,11 +1,8 @@
 package lesson1.homework.src.com.hsai.algorithms;
 
-import java.util.Collection;
 
-public class SelectionSort implements SortingAlgorithm  {
-
-
-    void sort2(int arr[]) {
+public class SelectionSort{
+    public static void sort(int arr[]) {
         int n = arr.length;
 
         // One by one move boundary of unsorted subarray

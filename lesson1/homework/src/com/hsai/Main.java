@@ -1,50 +1,33 @@
 package lesson1.homework.src.com.hsai;
 
 import java.util.Arrays;
-import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
 
 import lesson1.homework.src.com.hsai.algorithms.*;
 
-import static lesson1.homework.src.com.hsai.algorithms.SortManager.chooseSort;
 
 
 public class Main {
     public static void main(String[] args) {
-        int[] numbers = IOUtils.toIntArray(args);
-        int sortChoice = numbers[0] % 4;
-        int[] unsortedNums = Arrays.copyOfRange(numbers, 1, numbers.length);
-        System.out.println(Arrays.toString(unsortedNums));
+        int[] rawNumbers = IOUtils.toIntArray(args);
+//      calculating the correct always positive remainder
+        int sortChoice = (((rawNumbers[0] % 4) + 4) % 4);
+        int[] numbers = Arrays.copyOfRange(rawNumbers, 1, rawNumbers.length);
 
-        chooseSort();
+        String[] sortAlgos = {
+            "Selection Sort",
+            "Insertion Sort",
+            "Merge Sort",
+            "Quick Sort",
+        };
 
-        switch (sortChoice){
-            case 0:
-                QuickSort algo = new QuickSort();
-
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            default:
-                break;
+        switch (sortChoice) {
+            case 0 -> SelectionSort.sort(numbers);
+            case 1 -> InsertionSort.sort(numbers);
+            case 2 -> MergeSort.sort(numbers, 0, numbers.length - 1);
+            case 3 -> QuickSort.sort(numbers, 0, numbers.length - 1);
+            default -> {
+            }
         }
-    }
-
-    enum SortType {
-        SELECTION, INSERTION, MERGE, QUICK
-    }
-
-    private static final Map<SortType, Consumer<Integer[]>> sorts = Map.of(SortType.SELECTION, (e) -> {
-        int x;
-        SelectionSort::sort(e);
-    });
-
-    private static void chooseAndSort(int[] array, SortType type) {
-
+        IOUtils.writeOutput(sortAlgos[sortChoice], numbers);
     }
 }

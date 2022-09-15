@@ -2,7 +2,7 @@ package lesson1.homework.src.com.hsai.algorithms;
 
 public class InsertionSort {
     /*Function to sort array using insertion sort*/
-    void sort(int arr[]) {
+    public static void sort(int arr[]) {
         int n = arr.length;
         for (int i = 1; i < n; ++i) {
             int key = arr[i];

@@ -2,16 +2,11 @@ package lesson1.homework.src.com.hsai.algorithms;
 
 import java.util.Collection;
 
-public class MergeSort implements SortingAlgorithm {
-    @Override
-    public Collection<Integer> sort(Collection<Integer> sourceCollection) {
-        so
-    }
-
+public class MergeSort {
     // Merges two subarrays of arr[].
     // First subarray is arr[l..m]
     // Second subarray is arr[m+1..r]
-    void merge(int arr[], int l, int m, int r) {
+    static void merge(int arr[], int l, int m, int r) {
         // Find sizes of two subarrays to be merged
         int n1 = m - l + 1;
         int n2 = r - m;
@@ -61,7 +56,7 @@ public class MergeSort implements SortingAlgorithm {
 
     // Main function that sorts arr[l..r] using
     // merge()
-    void sort(int arr[], int l, int r) {
+    public static void sort(int arr[], int l, int r) {
         if (l < r) {
             // Find the middle point
             int m = l + (r - l) / 2;
