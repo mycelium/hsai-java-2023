@@ -5,13 +5,13 @@ import com.hsai.auxclasses.AlgDeterm;
 import com.hsai.sortalgs.*;
 
 public class SortApp {
-    public static final int ALG_CNT = 4;
+
     public static void main(String[] args) {
         int[] intArgs = Arrays.copyOf(IOUtils.toIntArray(args), args.length);
         int algId = AlgDeterm.Determine(intArgs[0]);
-        int[] array; //TODO: fill array
+        int[] array = { }; //TODO: fill array
 
-        AbstractSort sort;
+        AbstractSort sort = null;
         switch (algId) {
             case 0:
                 sort = new SelectionSort();
