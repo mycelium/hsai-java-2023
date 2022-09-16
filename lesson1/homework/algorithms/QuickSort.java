@@ -1,12 +1,10 @@
-package lesson1.homework.src.com.hsai.algorithms;
+package lesson1.homework.algorithms;
 
-import java.util.Collection;
 
 public class QuickSort {
 
     // A utility function to swap two elements
-    static void swap(int[] arr, int i, int j)
-    {
+    static void swap(int[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
@@ -17,8 +15,7 @@ public class QuickSort {
        array, and places all smaller (smaller than pivot)
        to left of pivot and all greater elements to right
        of pivot */
-    static int partition(int[] arr, int low, int high)
-    {
+    static int partition(int[] arr, int low, int high) {
 
         // pivot
         int pivot = arr[high];
@@ -28,13 +25,11 @@ public class QuickSort {
         // of pivot found so far
         int i = (low - 1);
 
-        for(int j = low; j <= high - 1; j++)
-        {
+        for (int j = low; j <= high - 1; j++) {
 
             // If current element is smaller
             // than the pivot
-            if (arr[j] < pivot)
-            {
+            if (arr[j] < pivot) {
 
                 // Increment index of
                 // smaller element
@@ -51,10 +46,8 @@ public class QuickSort {
               low --> Starting index,
               high --> Ending index
      */
-    public static void sort(int[] arr, int low, int high)
-    {
-        if (low < high)
-        {
+    public static void sort(int[] arr, int low, int high) {
+        if (low < high) {
 
             // pi is partitioning index, arr[p]
             // is now at right place

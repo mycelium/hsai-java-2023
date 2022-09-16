@@ -1,6 +1,4 @@
-package lesson1.homework.src.com.hsai.algorithms;
-
-import java.util.Collection;
+package lesson1.homework.algorithms;
 
 public class MergeSort {
     // Merges two subarrays of arr[].

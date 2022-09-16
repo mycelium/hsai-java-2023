@@ -1,10 +1,8 @@
-package lesson1.homework.src.com.hsai;
+package lesson1.homework;
 
 import java.util.Arrays;
 
-import lesson1.homework.src.com.hsai.algorithms.*;
-
-
+import lesson1.homework.algorithms.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,11 +11,11 @@ public class Main {
         int sortChoice = (((rawNumbers[0] % 4) + 4) % 4);
         int[] numbers = Arrays.copyOfRange(rawNumbers, 1, rawNumbers.length);
 
-        String[] sortAlgos = {
-            "Selection Sort",
-            "Insertion Sort",
-            "Merge Sort",
-            "Quick Sort",
+        String[] sortAlgorithms = {
+                "Selection Sort",
+                "Insertion Sort",
+                "Merge Sort",
+                "Quick Sort",
         };
 
         switch (sortChoice) {
@@ -28,6 +26,6 @@ public class Main {
             default -> {
             }
         }
-        IOUtils.writeOutput(sortAlgos[sortChoice], numbers);
+        IOUtils.writeOutput(sortAlgorithms[sortChoice], numbers);
     }
 }

@@ -1,4 +1,4 @@
-package lesson1.homework.src.com.hsai.algorithms;
+package lesson1.homework.algorithms;
 
 public class InsertionSort {
     /*Function to sort array using insertion sort*/

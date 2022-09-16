@@ -1,4 +1,4 @@
-package lesson1.homework.src.com.hsai;
+package lesson1.homework;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;

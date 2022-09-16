@@ -1,7 +1,7 @@
-package lesson1.homework.src.com.hsai.algorithms;
+package lesson1.homework.algorithms;
 
 
-public class SelectionSort{
+public class SelectionSort {
     public static void sort(int arr[]) {
         int n = arr.length;
 
