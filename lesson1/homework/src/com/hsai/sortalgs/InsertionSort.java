@@ -2,11 +2,10 @@ package com.hsai.sortalgs;
 
 public class InsertionSort extends AbstractSort {
     public InsertionSort() {
-        super("");   //TODO
+        super("Insertion sort");
     }
 
-    public int[] Sort(int[] array) {
-        int[] tmp = { };
-        return tmp;
+    public int[] Sort(int[] array) { //TODO
+        return array;
     }
 }

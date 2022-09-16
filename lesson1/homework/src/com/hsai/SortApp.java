@@ -9,22 +9,25 @@ public class SortApp {
     public static void main(String[] args) {
         int[] intArgs = Arrays.copyOf(IOUtils.toIntArray(args), args.length);
         int algId = AlgDeterm.Determine(intArgs[0]);
+        int[] array; //TODO: fill array
+
         AbstractSort sort;
         switch (algId) {
             case 0:
                 sort = new SelectionSort();
                 break;
             case 1:
-                sort = new MergeSort();
+                sort = new InsertionSort();
                 break;
             case 2:
-                sort = new InsertionSort();
+                sort = new MergeSort();
                 break;
             case 3:
                 sort = new QuickSort();
                 break;
             default:
         }
-        //sort.Sort(array);
+        sort.Sort(array);
+        IOUtils.writeOutput(sort.getName(), array);
     }
 }
