@@ -27,6 +27,7 @@ public class SortApp {
                 break;
             default:
         }
+        
         sort.sort(array);
         IOUtils.writeOutput(sort.getName(), array);
     }
