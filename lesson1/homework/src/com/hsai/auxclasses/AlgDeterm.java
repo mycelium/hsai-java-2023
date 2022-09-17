@@ -4,11 +4,12 @@ public class AlgDeterm {
     public static final int ALG_CNT = 4;
     
     public static int Determine(int inp) {
+        inp %= ALG_CNT;
         if (inp >= 0) {
-            return inp % ALG_CNT;
+            return inp;
         }
         else {
-            return inp + ALG_CNT * -1 * inp / 4;
+            return (ALG_CNT + inp);
         }
     };
 }
