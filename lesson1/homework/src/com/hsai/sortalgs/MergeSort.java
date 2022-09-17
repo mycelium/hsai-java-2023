@@ -5,7 +5,7 @@ public class MergeSort extends AbstractSort {
         super("Merge sort");
     }
 
-    public int[] Sort(int[] array) { //TODO
-        return array;
+    public void sort(int[] array) { //TODO
+    
     }
 }

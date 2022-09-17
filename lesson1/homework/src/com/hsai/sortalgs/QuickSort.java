@@ -5,7 +5,7 @@ public class QuickSort extends AbstractSort {
         super("Quick sort");
     }
 
-    public int[] Sort(int[] array) { //TODO
-        return array;
+    public void sort(int[] array) { //TODO
+        
     }
 }

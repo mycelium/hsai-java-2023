@@ -9,7 +9,7 @@ public class SortApp {
     public static void main(String[] args) {
         int[] intArgs = Arrays.copyOf(IOUtils.toIntArray(args), args.length);
         int algId = AlgDeterm.Determine(intArgs[0]);
-        int[] array = { }; //TODO: fill array
+        int[] array = Arrays.copyOfRange(intArgs, 1, intArgs.length);
 
         AbstractSort sort = null;
         switch (algId) {
@@ -27,7 +27,7 @@ public class SortApp {
                 break;
             default:
         }
-        sort.Sort(array);
+        sort.sort(array);
         IOUtils.writeOutput(sort.getName(), array);
     }
 }

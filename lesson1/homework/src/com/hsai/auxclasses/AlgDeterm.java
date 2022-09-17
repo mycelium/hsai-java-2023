@@ -8,7 +8,7 @@ public class AlgDeterm {
             return inp % ALG_CNT;
         }
         else {
-            return ALG_CNT - (-1) * inp % 4;
+            return inp + ALG_CNT * -1 * inp / 4;
         }
     };
 }

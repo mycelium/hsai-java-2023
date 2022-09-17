@@ -15,5 +15,11 @@ public abstract class AbstractSort {
         return name;
     }
 
-    public abstract int[] Sort(int[] array);
+    protected void swap(int[] array, int i, int j) {
+        int tmp = array[i];
+        array[i] = array[j];
+        array[j] = tmp;
+    }
+
+    public abstract void sort(int[] array);
 }
