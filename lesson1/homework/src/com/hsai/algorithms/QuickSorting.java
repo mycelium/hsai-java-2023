@@ -1,14 +1,14 @@
 package lesson1.homework.src.com.hsai.algorithms;
-import lesson1.homework.src.com.hsai.algorithms.ParentSort;
 
 
 public class QuickSorting extends ParentSort {
     public QuickSorting() {
-        name = "Быстрая сортировка";
+        name = "Quick sorting";
     }
+
     boolean started = false;
-    public int[] sort(int[] array, int leftBorder, int rightBorder)
-    {
+
+    public int[] sort(int[] array, int leftBorder, int rightBorder) {
         if (!started) {
             rightBorder--;
             started = true;

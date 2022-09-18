@@ -1,10 +1,10 @@
 package lesson1.homework.src.com.hsai.algorithms;
-import lesson1.homework.src.com.hsai.algorithms.ParentSort;
 
 public class MergeSorting extends ParentSort {
     public MergeSorting() {
-        name = "Сортировка слиянием";
+        name = "Merge sorting";
     }
+
     public int[] sort(int[] a, int s, int n) {
         if (n < 2) {
             return a;
@@ -25,6 +25,7 @@ public class MergeSorting extends ParentSort {
         merge(a, l, r, mid, n - mid);
         return a;
     }
+
     public void merge(
             int[] a, int[] l, int[] r, int left, int right) {
 
@@ -32,8 +33,7 @@ public class MergeSorting extends ParentSort {
         while (i < left && j < right) {
             if (l[i] <= r[j]) {
                 a[k++] = l[i++];
-            }
-            else {
+            } else {
                 a[k++] = r[j++];
             }
         }
