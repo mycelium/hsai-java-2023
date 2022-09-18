@@ -1,8 +1,8 @@
 package lesson1.homework.src.com.hsai.SortingMethods;
 
 public class MergeSort {
-    public static void mergeSort(int[] array){
-        mergeRecurse(array,0,array.length-1);
+    public static void mergeSort(int[] array) {
+        mergeRecurse(array, 0, array.length - 1);
     }
 
     private static void merge(int[] array, int p, int q, int r) {
@@ -47,7 +47,7 @@ public class MergeSort {
         }
     }
 
-    private static void mergeRecurse(int[] array, int left, int right){
+    private static void mergeRecurse(int[] array, int left, int right) {
         if (left < right) {
 
             int middle = (left + right) / 2;

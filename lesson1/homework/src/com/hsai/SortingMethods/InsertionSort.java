@@ -1,7 +1,7 @@
 package lesson1.homework.src.com.hsai.SortingMethods;
 
 public class InsertionSort {
-    public static void insertionSort(int[] array){
+    public static void insertionSort(int[] array) {
 
         int size = array.length;
         for (int step = 1; step < size; step++) {
