@@ -20,8 +20,7 @@ public class MergeSort extends AbstractSort {
             if (left[i] <= right[j]) {
                 array[k] = left[i];
                 i++;
-            }
-            else {
+            } else {
                 array[k] = right[j];
                 j++;
             }
@@ -33,7 +32,7 @@ public class MergeSort extends AbstractSort {
             i++;
             k++;
         }
-        
+
         while (j < right.length) {
             array[k] = right[j];
             j++;

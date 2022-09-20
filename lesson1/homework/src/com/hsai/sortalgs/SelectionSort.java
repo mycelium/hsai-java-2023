@@ -15,7 +15,7 @@ public class SelectionSort extends AbstractSort {
             }
             if (minIndex != i) {
                 swap(array, i, minIndex);
-            }    
+            }
         }
     }
 }

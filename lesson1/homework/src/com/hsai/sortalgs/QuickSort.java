@@ -5,7 +5,7 @@ public class QuickSort extends AbstractSort {
         super("Quick sort");
     }
 
-    //https://otus.ru/nest/post/788/
+    // https://otus.ru/nest/post/788/
     private void quickSort(int[] array, int low, int high) {
         if ((array.length == 0) || (low >= high)) {
             return;

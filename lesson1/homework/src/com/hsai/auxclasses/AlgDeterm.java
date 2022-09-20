@@ -2,14 +2,13 @@ package com.hsai.auxclasses;
 
 public class AlgDeterm {
     public static final int ALG_CNT = 4;
-    
-    public static int Determine(int inp) {
-        inp %= ALG_CNT;
-        if (inp >= 0) {
-            return inp;
-        }
-        else {
-            return (ALG_CNT + inp);
+
+    public static int determine(int origAlgId) {
+        origAlgId %= ALG_CNT;
+        if (origAlgId >= 0) {
+            return origAlgId;
+        } else {
+            return (ALG_CNT + origAlgId);
         }
     };
 }

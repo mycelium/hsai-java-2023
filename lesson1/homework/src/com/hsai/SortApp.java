@@ -8,7 +8,7 @@ public class SortApp {
 
     public static void main(String[] args) {
         int[] intArgs = Arrays.copyOf(IOUtils.toIntArray(args), args.length);
-        int algId = AlgDeterm.Determine(intArgs[0]);
+        int algId = AlgDeterm.determine(intArgs[0]);
         int[] array = Arrays.copyOfRange(intArgs, 1, intArgs.length);
 
         AbstractSort sort = null;
@@ -26,8 +26,10 @@ public class SortApp {
                 sort = new QuickSort();
                 break;
             default:
+                System.out.println("Invalid algorithm ID");
+                return;
         }
-        
+
         sort.sort(array);
         IOUtils.writeOutput(sort.getName(), array);
     }
