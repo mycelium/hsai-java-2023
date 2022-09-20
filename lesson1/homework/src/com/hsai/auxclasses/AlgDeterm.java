@@ -1,4 +1,4 @@
-package com.hsai.auxclasses;
+package lesson1.homework.src.com.hsai.auxclasses;
 
 public class AlgDeterm {
     public static final int ALG_CNT = 4;

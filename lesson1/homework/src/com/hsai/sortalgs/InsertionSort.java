@@ -1,4 +1,4 @@
-package com.hsai.sortalgs;
+package lesson1.homework.src.com.hsai.sortalgs;
 
 public class InsertionSort extends AbstractSort {
     public InsertionSort() {

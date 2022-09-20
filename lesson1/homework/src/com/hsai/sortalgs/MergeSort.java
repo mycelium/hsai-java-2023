@@ -1,8 +1,8 @@
-package com.hsai.sortalgs;
+package lesson1.homework.src.com.hsai.sortalgs;
 
 import java.util.Arrays;
 
-//https://www.geeksforgeeks.org/merge-sort/
+// https://www.geeksforgeeks.org/merge-sort/
 public class MergeSort extends AbstractSort {
     public MergeSort() {
         super("Merge sort");

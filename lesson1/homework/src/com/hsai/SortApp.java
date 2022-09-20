@@ -1,8 +1,8 @@
-package com.hsai;
+package lesson1.homework.src.com.hsai;
 
 import java.util.Arrays;
-import com.hsai.auxclasses.AlgDeterm;
-import com.hsai.sortalgs.*;
+import lesson1.homework.src.com.hsai.auxclasses.AlgDeterm;
+import lesson1.homework.src.com.hsai.sortalgs.*;
 
 public class SortApp {
 
