@@ -1,4 +1,4 @@
-package com.hsai;
+package com.hsai.additional;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
