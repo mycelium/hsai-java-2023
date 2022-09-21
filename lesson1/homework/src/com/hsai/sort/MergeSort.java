@@ -8,7 +8,7 @@ public class MergeSort {
 
     private static void sortWithParameters(int[] array, int left, int right) {
         if (left < right) {
-            int middle = left  + (right  - left) / 2;
+            int middle = left + (right - left) / 2;
 
             sortWithParameters(array, left, middle);
             sortWithParameters(array, middle + 1, right);
