@@ -2,7 +2,7 @@ package com.hsai.algorithms;
 
 public class Selection extends AbstractSort{
     public Selection() {
-        super("Selection sort"); // in C++ : Selection() : AbstractSort("Selection sort");
+        super("Selection sort"); 
     };
     public void sort(int[] array) {
         for (int left = 0; left < array.length; left++) {

@@ -2,7 +2,7 @@ package com.hsai.algorithms;
 
 public class Merge extends AbstractSort{
     public Merge() {
-        super("Merge sort"); // in C++ : Merge() : AbstractSort("Merge sort");
+        super("Merge sort"); 
     };
     public void sort(int[] array) {
         mergeSort(array, 0, array.length - 1);

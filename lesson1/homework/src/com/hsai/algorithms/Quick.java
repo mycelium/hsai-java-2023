@@ -2,7 +2,7 @@ package com.hsai.algorithms;
 
 public class Quick extends AbstractSort{
     public Quick() {
-        super("Quick sort"); // in C++ : Quick() : AbstractSort("Quick sort");
+        super("Quick sort"); 
     };
     public void sort(int[] array) {
         quickSort(array, 0, array.length - 1);

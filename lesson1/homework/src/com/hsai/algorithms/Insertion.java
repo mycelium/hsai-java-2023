@@ -2,7 +2,7 @@ package com.hsai.algorithms;
 
 public class Insertion extends AbstractSort{
     public Insertion() {
-        super("Insertion sort"); // in C++ : Insertion() : AbstractSort("Insertion sort");
+        super("Insertion sort"); 
     };
     public void sort(int[] array) {
         for (int left = 0; left < array.length; left++) {
