@@ -3,7 +3,6 @@ package lesson1.homework.src.com.hsai.sort;
 public class SelectionSort {
     public static void selectionSort(int[] array)
     {
-
         for (int i = 0; i < array.length - 1; i++)
         {
             int minIdx = i;
