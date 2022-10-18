@@ -2,6 +2,7 @@ package lesson6.homework;
 
 import lesson6.homework.src.HashMap.*;
 import lesson6.homework.src.Helpers.Point;
+
 import java.util.Optional;
 
 
@@ -11,6 +12,7 @@ public class Main {
         map.setLinearStrategy();
         map.setStep(3);
         map.setCapacity(5);
+        map.contains("test");
         map.put("Test point", new Point(-2, 12));
         map.put("Point filler", null);
         map.put("", new Point(0, 0));

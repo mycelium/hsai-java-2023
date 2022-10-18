@@ -28,7 +28,4 @@ public class HashMapElement {
         return this.hashCode;
     }
 
-//    public static HashMapElement makeElement(String k, Point p ) {
-//        return new HashMapElement(k,p);
-//    }
 }

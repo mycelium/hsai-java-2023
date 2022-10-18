@@ -10,7 +10,7 @@ public class LinearSearch extends AbstractSearch {
             if (table[hash % capacity].getKey().equals(key)) {
                 return hash % capacity;
             }
-            hash+= this.step;
+            hash += this.step;
         }
         return -1;
     }

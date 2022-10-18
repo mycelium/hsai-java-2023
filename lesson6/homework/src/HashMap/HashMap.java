@@ -7,7 +7,6 @@ import java.util.Optional;
 import lesson6.homework.src.Search.*;
 
 
-
 public class HashMap {
     HashMapElement[] table;
     double loadFactor;
@@ -84,8 +83,9 @@ public class HashMap {
         this.size++;
         this.resizeIfTableIsFull(2 * this.capacity);
     }
+
     public Point get(String key) {
-        int index = this.searchStrategy.search(key,this.table,this.capacity);
+        int index = this.searchStrategy.search(key, this.table, this.capacity);
         if (index == -1) {
             return null;
         }
@@ -93,7 +93,7 @@ public class HashMap {
     }
 
     public Optional<Point> getSafe(String key) {
-        int index = this.searchStrategy.search(key,this.table,this.capacity);
+        int index = this.searchStrategy.search(key, this.table, this.capacity);
         if (index == -1) {
             return Optional.empty();
         }
@@ -101,7 +101,7 @@ public class HashMap {
     }
 
     public Point getOrElse(String key, Point def) {
-        int index = this.searchStrategy.search(key,this.table,this.capacity);
+        int index = this.searchStrategy.search(key, this.table, this.capacity);
         if (index == -1) {
             return def;
         }
@@ -109,7 +109,7 @@ public class HashMap {
     }
 
     public Optional<Point> remove(String key) {
-        int index = this.searchStrategy.search(key,this.table,this.capacity);
+        int index = this.searchStrategy.search(key, this.table, this.capacity);
         if (index == -1) {
             return Optional.empty();
         }
@@ -119,7 +119,7 @@ public class HashMap {
     }
 
     public boolean contains(String key) {
-        return searchStrategy.search(key,table,capacity) != -1;
+        return searchStrategy.search(key, table, capacity) != -1;
     }
 
 }
