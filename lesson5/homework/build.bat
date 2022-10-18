@@ -11,4 +11,4 @@ jar -cfe ..\HashMapTestApp.jar com/hsai/HashMapTestClass .\com\hsai\*.class  .\c
 .\com\hsai\myfileio\*.class .\com\hsai\mypair\*.class
 cd..
 rmdir /s /q bin
-@pause
+::@pause

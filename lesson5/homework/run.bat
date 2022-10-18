@@ -1,4 +1,4 @@
 @echo off
-java -jar HashMapTestApp.jar test2.txt
+java -jar HashMapTestApp.jar
 ::del HashMapApp.jar
 @pause
