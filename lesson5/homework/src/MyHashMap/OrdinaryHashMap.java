@@ -11,6 +11,8 @@ public class OrdinaryHashMap implements OrdinaryInterface {
             return stone.equals("DELETED") && value == null && key == null;
         }
     }
+
+    private static final HashElement tombStone = new HashElement(null,"DELETED",null);
     private final SearchTechniques searchTechnique;
     int step;
     HashElement[] hashTable;
@@ -107,7 +109,7 @@ public class OrdinaryHashMap implements OrdinaryInterface {
             while (Objects.nonNull(hashTable[hashValue]) || Objects.nonNull(hashTable[hashValue]) && !hashTable[hashValue].isTombstone()) {
                 if (Objects.equals(k, hashTable[hashValue].key())) {
                     Point returnPoint = hashTable[hashValue].value();
-                    hashTable[hashValue] = new HashElement(null, "DELETED", null);
+                    hashTable[hashValue] = tombStone;
                     numberOfTombStones++;
                     numberOfElements--;
                     return Optional.of(returnPoint);
