@@ -22,12 +22,15 @@ public class LinearHashMap extends OrdinaryHashMap implements LinearInterface {
     public Point get(String k) {
         int hashValue = (k.hashCode() & Integer.MAX_VALUE) % getTableSize();
 
-        for (int i = 0; i < getTableSize(); ++i) {
-            if (Objects.nonNull(hashTable[hashValue]) && !hashTable[hashValue].isTombstone() && hashTable[hashValue].getKey().equals(k)) {
-                return hashTable[hashValue].getValue();
-            }
+        if (Objects.nonNull(hashTable[hashValue])) {
 
-            hashValue = (hashValue + getStep()) % getTableSize();
+            for (int i = 0; i < getTableSize(); ++i) {
+                if (Objects.nonNull(hashTable[hashValue]) && !hashTable[hashValue].isTombstone() && hashTable[hashValue].key().equals(k)) {
+                    return hashTable[hashValue].value();
+                }
+
+                hashValue = (hashValue + getStep()) % getTableSize();
+            }
         }
 
         return null;

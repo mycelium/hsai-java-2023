@@ -10,7 +10,7 @@ public class MyHashMapTest {
         searchTechnique = techniques;
     }
 
-    public void Tests() throws Exception {
+    public void tests() throws Exception {
         if (!putWithSameKeys()) {
             throw new Exception("putWithSameKeys() problem!");
         } else if (!checkFunctionsAfterRemoval()) {
@@ -115,13 +115,8 @@ public class MyHashMapTest {
         test.put(keys[1], new Point(2, 2));
         test.remove("one");
         test.remove("three");
-        if (!test.hashTable[(keys[0].hashCode() & Integer.MAX_VALUE) % test.getTableSize()].isTombstone()) {
-            return false;
-        } else if (!test.hashTable[(keys[1].hashCode() & Integer.MAX_VALUE) % test.getTableSize()].isTombstone()) {
-            return false;
-        } else {
-            return Objects.equals(test.remove("one"), Optional.empty()) && Objects.equals(test.remove("love"), Optional.empty());
-        }
+
+        return Objects.equals(test.remove("one"), Optional.empty()) && Objects.equals(test.remove("love"), Optional.empty());
     }
 
     boolean removeAndResizeAndGet() {

@@ -13,9 +13,9 @@ public class Main {
         MyHashMapTest test2 = new MyHashMapTest(SearchTechniques.QUADRATIC);
 
         try {
-            test.Tests();
-            test1.Tests();
-            test2.Tests();
+            test.tests();
+            test1.tests();
+            test2.tests();
         } catch (Exception var8) {
             throw new RuntimeException(var8);
         }

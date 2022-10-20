@@ -11,17 +11,18 @@ public class QuadraticHashMap extends OrdinaryHashMap {
     public Point get(String k) {
         int hashValue = (k.hashCode() & Integer.MAX_VALUE) % getTableSize();
 
-        for (int j = 1; j < getTableSize(); ++j) {
-            if (Objects.nonNull(hashTable[hashValue]) && !hashTable[hashValue].isTombstone() && Objects.equals(k, hashTable[hashValue].getKey())) {
-                return hashTable[hashValue].getValue();
-            }
+        if (Objects.nonNull(hashTable[hashValue])) {
+            for (int j = 1; j < getTableSize(); ++j) {
+                if (Objects.nonNull(hashTable[hashValue]) && !hashTable[hashValue].isTombstone() && Objects.equals(k, hashTable[hashValue].key())) {
+                    return hashTable[hashValue].value();
+                }
 
-            int newHashValue = (hashValue + (j * j + j) / 2) % roundUp2(getTableSize());
-            if (newHashValue < getTableSize()) {
-                hashValue = newHashValue;
+                int newHashValue = (hashValue + (j * j + j) / 2) % roundUp2(getTableSize());
+                if (newHashValue < getTableSize()) {
+                    hashValue = newHashValue;
+                }
             }
         }
-
         return null;
     }
 

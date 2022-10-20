@@ -6,9 +6,14 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class OrdinaryHashMap implements OrdinaryInterface {
+    protected record HashElement(String key, String stone, Point value) {
+        public boolean isTombstone() {
+            return stone.equals("DELETED") && value == null && key == null;
+        }
+    }
+    private final SearchTechniques searchTechnique;
     int step;
     HashElement[] hashTable;
-    private final SearchTechniques searchTechnique;
     private int numberOfElements;
     private int numberOfTombStones;
     private int tableSize;
@@ -46,11 +51,11 @@ public class OrdinaryHashMap implements OrdinaryInterface {
 
         for (int hashValue = (k.hashCode() & Integer.MAX_VALUE) % tableSize; hashValue < tableSize; ++hashValue) {
             if (Objects.isNull(hashTable[hashValue])) {
-                hashTable[hashValue] = new HashElement(k, val);
+                hashTable[hashValue] = new HashElement(k, "INSERTED", val);
                 break;
             }
 
-            if (Objects.equals(hashTable[hashValue].getKey(), k)) {
+            if (Objects.equals(hashTable[hashValue].key(), k)) {
                 return;
             }
 
@@ -66,19 +71,15 @@ public class OrdinaryHashMap implements OrdinaryInterface {
     public Point get(String k) {
         int hashValue = (k.hashCode() & Integer.MAX_VALUE) % tableSize;
 
-        for (int i = 0; i < getTableSize(); i++) {
-            if (Objects.nonNull(hashTable[hashValue])) {
-                if (!hashTable[hashValue].isTombstone() && Objects.equals(k, hashTable[hashValue].getKey())) {
-                    return hashTable[hashValue].getValue();
-                }
-
-                hashValue++;
-                if (Objects.equals(hashValue, tableSize)) {
-                    hashValue = 0;
-                }
+        while (Objects.nonNull(hashTable[hashValue])) {
+            if (!hashTable[hashValue].isTombstone() && Objects.equals(k, hashTable[hashValue].key())) {
+                return hashTable[hashValue].value();
+            }
+            hashValue++;
+            if (Objects.equals(hashValue, tableSize)) {
+                hashValue = 0;
             }
         }
-
         return null;
     }
 
@@ -89,7 +90,8 @@ public class OrdinaryHashMap implements OrdinaryInterface {
 
     @Override
     public Point getOrElse(String k, Point val) {
-        return contains(k) ? get(k) : val;
+        var returnPoint = get(k);
+        return returnPoint == null ? val : returnPoint;
     }
 
     @Override
@@ -99,15 +101,13 @@ public class OrdinaryHashMap implements OrdinaryInterface {
 
     @Override
     public Optional<Point> remove(String k) {
-        if (!contains(k)) {
-            return Optional.empty();
-        } else {
+        if (contains(k)) {
             int hashValue = (k.hashCode() & Integer.MAX_VALUE) % tableSize;
 
             while (Objects.nonNull(hashTable[hashValue]) || Objects.nonNull(hashTable[hashValue]) && !hashTable[hashValue].isTombstone()) {
-                if (Objects.equals(k, hashTable[hashValue].getKey())) {
-                    Point returnPoint = hashTable[hashValue].getValue();
-                    hashTable[hashValue].makeTombstone();
+                if (Objects.equals(k, hashTable[hashValue].key())) {
+                    Point returnPoint = hashTable[hashValue].value();
+                    hashTable[hashValue] = new HashElement(null, "DELETED", null);
                     numberOfTombStones++;
                     numberOfElements--;
                     return Optional.of(returnPoint);
@@ -118,9 +118,8 @@ public class OrdinaryHashMap implements OrdinaryInterface {
                     hashValue = 0;
                 }
             }
-
-            return Optional.ofNullable(get(k));
         }
+        return Optional.empty();
     }
 
     private void resize(int newSize) {
@@ -135,7 +134,7 @@ public class OrdinaryHashMap implements OrdinaryInterface {
 
         for (HashElement hashElement : copyOfOldArray) {
             if (Objects.nonNull(hashElement) && !hashElement.isTombstone()) {
-                put(hashElement.getKey(), hashElement.getValue());
+                put(hashElement.key(), hashElement.value());
             }
         }
 
