@@ -1,14 +1,14 @@
-package lesson5.homework.src.MyHashMap;
+package lesson5.homework.src.HashTable;
 
 import lesson5.homework.src.Interfaces.LinearInterface;
 import lesson5.homework.src.Interfaces.OrdinaryInterface;
 
 import java.util.Optional;
 
-public class MyHashMap implements LinearInterface {
+public class HashTable implements LinearInterface {
     OrdinaryInterface table;
 
-    public MyHashMap(SearchTechniques searchTechnique) {
+    public HashTable(SearchTechniques searchTechnique) {
         if (searchTechnique.equals(SearchTechniques.LINEAR)) {
             table = new LinearHashMap(searchTechnique);
         } else if (searchTechnique.equals(SearchTechniques.QUADRATIC)) {

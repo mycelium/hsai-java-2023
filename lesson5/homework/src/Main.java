@@ -1,16 +1,16 @@
 package lesson5.homework.src;
 
-import lesson5.homework.src.MyHashMap.MyHashMap;
-import lesson5.homework.src.MyHashMap.MyHashMapTest;
-import lesson5.homework.src.MyHashMap.Point;
-import lesson5.homework.src.MyHashMap.SearchTechniques;
+import lesson5.homework.src.HashTable.HashTable;
+import lesson5.homework.src.HashTable.HashTableTest;
+import lesson5.homework.src.HashTable.Point;
+import lesson5.homework.src.HashTable.SearchTechniques;
 
 public class Main {
-
     public static void main(String[] args) {
-        MyHashMapTest test = new MyHashMapTest(SearchTechniques.ENUMERATE);
-        MyHashMapTest test1 = new MyHashMapTest(SearchTechniques.LINEAR);
-        MyHashMapTest test2 = new MyHashMapTest(SearchTechniques.QUADRATIC);
+
+        HashTableTest test = new HashTableTest(SearchTechniques.ENUMERATE);
+        HashTableTest test1 = new HashTableTest(SearchTechniques.LINEAR);
+        HashTableTest test2 = new HashTableTest(SearchTechniques.QUADRATIC);
 
         try {
             test.tests();
@@ -20,20 +20,20 @@ public class Main {
             throw new RuntimeException(var8);
         }
 
-        MyHashMap quadratic = new MyHashMap(SearchTechniques.QUADRATIC);
+        HashTable quadratic = new HashTable(SearchTechniques.QUADRATIC);
         //quadratic.setStep(17);
         quadratic.put("one", new Point(1, 1));
         Point returnPoint = quadratic.get("one");
         quadratic.remove("one");
 
-        MyHashMap linear = new MyHashMap(SearchTechniques.LINEAR);
+        HashTable linear = new HashTable(SearchTechniques.LINEAR);
         linear.setStep(87);
         //linear.setStep(14);
         linear.put("one", new Point(1, 1));
         returnPoint = linear.get("one");
         linear.remove("one");
 
-        MyHashMap enumerating = new MyHashMap(SearchTechniques.ENUMERATE);
+        HashTable enumerating = new HashTable(SearchTechniques.ENUMERATE);
         //enumerating.setStep(76);
         enumerating.put("one", new Point(1, 1));
         returnPoint = enumerating.get("one");

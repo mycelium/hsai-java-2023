@@ -1,6 +1,6 @@
 package lesson5.homework.src.Interfaces;
 
-import lesson5.homework.src.MyHashMap.Point;
+import lesson5.homework.src.HashTable.Point;
 
 import java.util.Optional;
 

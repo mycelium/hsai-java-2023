@@ -1,4 +1,4 @@
-package lesson5.homework.src.MyHashMap;
+package lesson5.homework.src.HashTable;
 
 public enum SearchTechniques {
     QUADRATIC,

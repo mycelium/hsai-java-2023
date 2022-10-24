@@ -1,4 +1,4 @@
-package lesson5.homework.src.MyHashMap;
+package lesson5.homework.src.HashTable;
 
 import lesson5.homework.src.Interfaces.OrdinaryInterface;
 
@@ -6,13 +6,10 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class OrdinaryHashMap implements OrdinaryInterface {
-    protected record HashElement(String key, String stone, Point value) {
-        public boolean isTombstone() {
-            return stone.equals("DELETED") && value == null && key == null;
-        }
+    record HashElement(String key, String stone, Point value) {
     }
 
-    private static final HashElement tombStone = new HashElement(null,"DELETED",null);
+    protected static final HashElement tombStone = new HashElement(null,"DELETED",null);
     private final SearchTechniques searchTechnique;
     int step;
     HashElement[] hashTable;
@@ -74,7 +71,7 @@ public class OrdinaryHashMap implements OrdinaryInterface {
         int hashValue = (k.hashCode() & Integer.MAX_VALUE) % tableSize;
 
         while (Objects.nonNull(hashTable[hashValue])) {
-            if (!hashTable[hashValue].isTombstone() && Objects.equals(k, hashTable[hashValue].key())) {
+            if (hashTable[hashValue]!=tombStone && Objects.equals(k, hashTable[hashValue].key())) {
                 return hashTable[hashValue].value();
             }
             hashValue++;
@@ -106,7 +103,7 @@ public class OrdinaryHashMap implements OrdinaryInterface {
         if (contains(k)) {
             int hashValue = (k.hashCode() & Integer.MAX_VALUE) % tableSize;
 
-            while (Objects.nonNull(hashTable[hashValue]) || Objects.nonNull(hashTable[hashValue]) && !hashTable[hashValue].isTombstone()) {
+            while (Objects.nonNull(hashTable[hashValue]) || Objects.nonNull(hashTable[hashValue]) && hashTable[hashValue]!=tombStone) {
                 if (Objects.equals(k, hashTable[hashValue].key())) {
                     Point returnPoint = hashTable[hashValue].value();
                     hashTable[hashValue] = tombStone;
@@ -135,7 +132,7 @@ public class OrdinaryHashMap implements OrdinaryInterface {
         numberOfTombStones = 0;
 
         for (HashElement hashElement : copyOfOldArray) {
-            if (Objects.nonNull(hashElement) && !hashElement.isTombstone()) {
+            if (Objects.nonNull(hashElement) && hashElement!=tombStone) {
                 put(hashElement.key(), hashElement.value());
             }
         }

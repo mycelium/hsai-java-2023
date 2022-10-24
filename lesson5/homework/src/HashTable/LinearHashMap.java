@@ -1,4 +1,4 @@
-package lesson5.homework.src.MyHashMap;
+package lesson5.homework.src.HashTable;
 
 import lesson5.homework.src.Interfaces.LinearInterface;
 
@@ -25,7 +25,7 @@ public class LinearHashMap extends OrdinaryHashMap implements LinearInterface {
         if (Objects.nonNull(hashTable[hashValue])) {
 
             for (int i = 0; i < getTableSize(); ++i) {
-                if (Objects.nonNull(hashTable[hashValue]) && !hashTable[hashValue].isTombstone() && hashTable[hashValue].key().equals(k)) {
+                if (Objects.nonNull(hashTable[hashValue]) && hashTable[hashValue]!=tombStone && hashTable[hashValue].key().equals(k)) {
                     return hashTable[hashValue].value();
                 }
 

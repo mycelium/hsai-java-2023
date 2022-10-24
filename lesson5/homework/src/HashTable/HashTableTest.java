@@ -1,12 +1,12 @@
-package lesson5.homework.src.MyHashMap;
+package lesson5.homework.src.HashTable;
 
 import java.util.Objects;
 import java.util.Optional;
 
-public class MyHashMapTest {
+public class HashTableTest {
     SearchTechniques searchTechnique;
 
-    public MyHashMapTest(SearchTechniques techniques) {
+    public HashTableTest(SearchTechniques techniques) {
         searchTechnique = techniques;
     }
 
@@ -120,7 +120,7 @@ public class MyHashMapTest {
     }
 
     boolean removeAndResizeAndGet() {
-        MyHashMap test = new MyHashMap(searchTechnique);
+        HashTable test = new HashTable(searchTechnique);
         if (searchTechnique == SearchTechniques.LINEAR) {
             test.setStep(31);
         }

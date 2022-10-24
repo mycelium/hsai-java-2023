@@ -1,4 +1,4 @@
-package lesson5.homework.src.MyHashMap;
+package lesson5.homework.src.HashTable;
 
 import java.util.Objects;
 
@@ -13,7 +13,7 @@ public class QuadraticHashMap extends OrdinaryHashMap {
 
         if (Objects.nonNull(hashTable[hashValue])) {
             for (int j = 1; j < getTableSize(); ++j) {
-                if (Objects.nonNull(hashTable[hashValue]) && !hashTable[hashValue].isTombstone() && Objects.equals(k, hashTable[hashValue].key())) {
+                if (Objects.nonNull(hashTable[hashValue]) && hashTable[hashValue]!=tombStone && Objects.equals(k, hashTable[hashValue].key())) {
                     return hashTable[hashValue].value();
                 }
 
