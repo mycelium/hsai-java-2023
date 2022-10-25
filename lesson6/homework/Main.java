@@ -8,14 +8,15 @@ import java.util.Optional;
 
 public class Main {
     public static void main(String[] args) {
-        HashMap map = new HashMap();
-        map.setLinearStrategy();
-        map.setStep(3);
-        map.setCapacity(5);
+        HashMap map = HashMap.linearBuilder().setCapacity(6).setStep(5).build();
+        //HashMap map = HashMap.consistentBuilder().setCapacity(12).setStep(12).build();  //compilation error
+        //
         map.contains("test");
         map.put("Test point", new Point(-2, 12));
         map.put("Point filler", null);
-        map.put("", new Point(0, 0));
+        map.remove("Point filler");
+        map.put("", new Point(2, 3));
+        map.put("Point filler", null);
         map.put("Lower left", new Point(-2, 12));
         map.put("Upper right", new Point(2, 2));
         Point leftPoint = map.get("Lower left");

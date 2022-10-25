@@ -4,10 +4,11 @@ import lesson6.homework.src.Helpers.HashMapElement;
 
 public class LinearSearch extends AbstractSearch {
 
+
     public int search(String key, HashMapElement[] table, int capacity) {
         int hash = Math.abs(key.hashCode());
         while (table[hash % capacity] != null) {
-            if (table[hash % capacity].getKey().equals(key)) {
+            if (table[hash % capacity].getKey().equals(key) && table[hash % capacity] != HashMapElement.TOMBSTONE) {
                 return hash % capacity;
             }
             hash += this.step;
@@ -16,9 +17,10 @@ public class LinearSearch extends AbstractSearch {
     }
 
     public int indexForPutting(int hash, HashMapElement[] table, int capacity) {
-        while (table[hash % capacity] != null) {
+        while (table[hash % capacity] != null && table[hash % capacity] != HashMapElement.TOMBSTONE) {
             hash += this.step;
         }
         return hash;
     }
+
 }

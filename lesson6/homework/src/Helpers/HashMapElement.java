@@ -1,8 +1,11 @@
 package lesson6.homework.src.Helpers;
 
 public class HashMapElement {
-    String key;
-    Point value;
+
+    public static HashMapElement TOMBSTONE = new HashMapElement("", null);
+
+    private String key;
+    private Point value;
 
     int hashCode;
 
@@ -29,3 +32,4 @@ public class HashMapElement {
     }
 
 }
+

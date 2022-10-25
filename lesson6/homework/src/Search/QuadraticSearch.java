@@ -8,19 +8,22 @@ public class QuadraticSearch extends AbstractSearch {
         int hash = Math.abs(key.hashCode());
         int q = 1;
         while (table[hash % capacity] != null) {
-            if (table[hash % capacity].getKey().equals(key)) {
+            if (table[hash % capacity].getKey().equals(key) && table[hash % capacity] != HashMapElement.TOMBSTONE) {
                 return hash % capacity;
             }
-            hash += (q++) ^ 2;
+            hash += q * q;
+            q++;
         }
         return -1;
     }
 
     public int indexForPutting(int hash, HashMapElement[] table, int capacity) {
         int q = 1;
-        while (table[hash % capacity] != null) {
-            hash += (q++) ^ 2;
+        while (table[hash % capacity] != null && table[hash % capacity] != HashMapElement.TOMBSTONE) {
+            hash += q * q;
+            q++;
         }
         return hash;
     }
+
 }

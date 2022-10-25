@@ -14,60 +14,97 @@ public class HashMap {
     int size;
     AbstractSearch searchStrategy;
 
-    public HashMap() {
-        this.loadFactor = 0.75;
-        this.capacity = 6;
-        this.table = new HashMapElement[capacity];
-        this.searchStrategy = new ConsistentSearch();
-        this.size = 0;
+    private HashMap() {
     }
 
-    public HashMap(int capacity) {
-        this.loadFactor = 0.75;
-        this.capacity = capacity;
-        this.table = new HashMapElement[capacity];
-        this.searchStrategy = new ConsistentSearch();
-        this.size = 0;
+    public static LinearBuilder linearBuilder() {
+        return new HashMap().new LinearBuilder();
     }
 
-    public void setCapacity(int capacity) {
-        if (capacity > size) {
-            this.capacity = capacity;
+    public static ConsistentBuilder consistentBuilder() {
+        return new HashMap().new ConsistentBuilder();
+    }
+
+    public static QuadraticBuilder quadraticBuilder() {
+        return new HashMap().new QuadraticBuilder();
+    }
+
+    abstract public class Builder {
+        private Builder() {
+        }
+
+        public HashMap build() {
+            return HashMap.this;
+        }
+
+    }
+
+    public class LinearBuilder extends Builder {
+        private LinearBuilder() {
+            HashMap.this.searchStrategy = new LinearSearch();
+        }
+
+        public LinearBuilder setCapacity(int capacity) {
+            HashMap.this.capacity = capacity;
+            return this;
+        }
+
+        public LinearBuilder setLoadFactor(int loadFactor) {
+            HashMap.this.loadFactor = loadFactor;
+            return this;
+        }
+
+        public LinearBuilder setStep(int step) {
+            HashMap.this.searchStrategy.setStep(step);
+            return this;
         }
     }
 
-    public void setConsistentStrategy() {
-        if (this.size == 0) {
-            this.searchStrategy = new ConsistentSearch();
+    public class ConsistentBuilder extends Builder {
+        private ConsistentBuilder() {
+            HashMap.this.searchStrategy = new ConsistentSearch();
+        }
+
+        public ConsistentBuilder setCapacity(int capacity) {
+            HashMap.this.capacity = capacity;
+            return this;
+        }
+
+        public ConsistentBuilder setLoadFactor(int loadFactor) {
+            HashMap.this.loadFactor = loadFactor;
+            return this;
         }
     }
 
-    public void setLinearStrategy() {
-        if (this.size == 0) {
-            this.searchStrategy = new LinearSearch();
+    public class QuadraticBuilder extends Builder {
+        private QuadraticBuilder() {
+            HashMap.this.searchStrategy = new QuadraticSearch();
         }
-    }
 
-    public void setQuadraticStrategy() {
-        if (this.size == 0) {
-            this.searchStrategy = new QuadraticSearch();
+        public QuadraticBuilder setCapacity(int capacity) {
+            HashMap.this.capacity = capacity;
+            return this;
         }
-    }
 
-    public void setStep(int step) {
-        this.searchStrategy.setStep(step);
+        public QuadraticBuilder setLoadFactor(int loadFactor) {
+            HashMap.this.loadFactor = loadFactor;
+            return this;
+        }
     }
 
     private void resizeIfTableIsFull(int newCapacity) {
         if ((double) this.size / this.capacity > this.loadFactor) {
             HashMapElement[] copyTable = new HashMapElement[newCapacity];
-            for (int i = 0; i < this.capacity; i++) {
-                if (this.table[i] != null) {
-                    copyTable[this.table[i].getHashCode() % newCapacity] = this.table[i];
-                }
-            }
+            HashMapElement[] oldTable = this.table;
+            int oldCapacity = this.capacity;
             this.capacity = newCapacity;
             this.table = copyTable;
+            for (int i = 0; i < oldCapacity; i++) {
+                if (oldTable[i] != null) {
+                    this.put(oldTable[i].getKey(), oldTable[i].getValue());
+                    this.size--;
+                }
+            }
         }
     }
 
@@ -97,7 +134,7 @@ public class HashMap {
         if (index == -1) {
             return Optional.empty();
         }
-        return Optional.of(this.table[index].getValue());
+        return Optional.ofNullable(this.table[index].getValue());
     }
 
     public Point getOrElse(String key, Point def) {
@@ -114,8 +151,9 @@ public class HashMap {
             return Optional.empty();
         }
         Point removed = this.table[index].getValue();
-        this.table[index] = null;
-        return Optional.of(removed);
+        this.table[index] = HashMapElement.TOMBSTONE;
+        this.size--;
+        return Optional.ofNullable(removed);
     }
 
     public boolean contains(String key) {
@@ -123,3 +161,5 @@ public class HashMap {
     }
 
 }
+
+
