@@ -135,7 +135,7 @@ public class HashMap {
         HashMapElement el = new HashMapElement(s, p);
         int hash;
         hash = searchStrategy.indexForPutting(el.getHashCode(), this.table, this.capacity);
-        el.setHashCode(hash);
+
         this.table[hash % this.capacity] = el;
         this.size++;
         this.resizeIfTableIsFull(2 * this.capacity);
