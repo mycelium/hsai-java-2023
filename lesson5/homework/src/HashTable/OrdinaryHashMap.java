@@ -6,23 +6,19 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class OrdinaryHashMap implements OrdinaryInterface {
-    record HashElement(String key, String stone, Point value) {
-    }
+    private static final HashElement tombStone = new HashElement(null, "DELETED", null);
 
-    protected static final HashElement tombStone = new HashElement(null,"DELETED",null);
-    private final SearchTechniques searchTechnique;
-    int step;
-    HashElement[] hashTable;
+    private final int minCapacity = 7;
+    protected HashElement[] hashTable;
     private int numberOfElements;
     private int numberOfTombStones;
     private int tableSize;
+    private int step;
 
-    public OrdinaryHashMap(SearchTechniques searchTechniques) {
-        searchTechnique = searchTechniques;
-        tableSize = 7;
+    public OrdinaryHashMap() {
+        tableSize = minCapacity;
         numberOfElements = 0;
         numberOfTombStones = 0;
-        step = 1;
         hashTable = new HashElement[tableSize];
     }
 
@@ -34,15 +30,22 @@ public class OrdinaryHashMap implements OrdinaryInterface {
         return tableSize;
     }
 
-    public int getNumberOfElements() {
-        return numberOfElements;
+    public HashElement getTombStone() {
+        return tombStone;
     }
 
     public int getStep() {
         return step;
     }
 
-    @Override
+    public void setStep(int s) throws IllegalArgumentException {
+        if (!Objects.equals(gcdForSteps(getTableSize(), s), 1)) {
+            throw new IllegalArgumentException();
+        } else {
+            step = s;
+        }
+    }
+
     public void put(String k, Point val) {
         if ((double) (numberOfElements + numberOfTombStones) / (double) tableSize > 0.75) {
             resize(tableSize * 2 + 1);
@@ -66,12 +69,11 @@ public class OrdinaryHashMap implements OrdinaryInterface {
         numberOfElements++;
     }
 
-    @Override
     public Point get(String k) {
         int hashValue = (k.hashCode() & Integer.MAX_VALUE) % tableSize;
 
         while (Objects.nonNull(hashTable[hashValue])) {
-            if (hashTable[hashValue]!=tombStone && Objects.equals(k, hashTable[hashValue].key())) {
+            if (hashTable[hashValue] != tombStone && Objects.equals(k, hashTable[hashValue].key())) {
                 return hashTable[hashValue].value();
             }
             hashValue++;
@@ -82,28 +84,24 @@ public class OrdinaryHashMap implements OrdinaryInterface {
         return null;
     }
 
-    @Override
     public Optional<Point> getSafe(String k) {
         return Optional.ofNullable(get(k));
     }
 
-    @Override
     public Point getOrElse(String k, Point val) {
         var returnPoint = get(k);
         return returnPoint == null ? val : returnPoint;
     }
 
-    @Override
     public boolean contains(String k) {
         return getSafe(k).isPresent();
     }
 
-    @Override
     public Optional<Point> remove(String k) {
         if (contains(k)) {
             int hashValue = (k.hashCode() & Integer.MAX_VALUE) % tableSize;
 
-            while (Objects.nonNull(hashTable[hashValue]) || Objects.nonNull(hashTable[hashValue]) && hashTable[hashValue]!=tombStone) {
+            while (Objects.nonNull(hashTable[hashValue]) || Objects.nonNull(hashTable[hashValue]) && hashTable[hashValue] != tombStone) {
                 if (Objects.equals(k, hashTable[hashValue].key())) {
                     Point returnPoint = hashTable[hashValue].value();
                     hashTable[hashValue] = tombStone;
@@ -132,11 +130,22 @@ public class OrdinaryHashMap implements OrdinaryInterface {
         numberOfTombStones = 0;
 
         for (HashElement hashElement : copyOfOldArray) {
-            if (Objects.nonNull(hashElement) && hashElement!=tombStone) {
+            if (Objects.nonNull(hashElement) && hashElement != tombStone) {
                 put(hashElement.key(), hashElement.value());
             }
         }
 
+    }
+
+    public void clear() {
+        hashTable = new HashElement[minCapacity];
+
+        tableSize = minCapacity;
+        numberOfElements = 0;
+        numberOfTombStones = 0;
+    }
+
+    record HashElement(String key, String stone, Point value) {
     }
 }
 

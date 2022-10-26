@@ -20,23 +20,23 @@ public class Main {
             throw new RuntimeException(var8);
         }
 
-        HashTable quadratic = new HashTable(SearchTechniques.QUADRATIC);
-        //quadratic.setStep(17);
+        HashTable quadratic = HashTable.OrdinaryBuilder.newInstance(SearchTechniques.QUADRATIC).build();
         quadratic.put("one", new Point(1, 1));
         Point returnPoint = quadratic.get("one");
         quadratic.remove("one");
+        System.out.println(returnPoint.toString());
 
-        HashTable linear = new HashTable(SearchTechniques.LINEAR);
-        linear.setStep(87);
-        //linear.setStep(14);
-        linear.put("one", new Point(1, 1));
+        HashTable linear = HashTable.LinearBuilder.newInstance(SearchTechniques.LINEAR).setStep(31).build();
+        linear.put("one", new Point(2, 2));
         returnPoint = linear.get("one");
         linear.remove("one");
+        System.out.println(returnPoint.toString());
 
-        HashTable enumerating = new HashTable(SearchTechniques.ENUMERATE);
-        //enumerating.setStep(76);
-        enumerating.put("one", new Point(1, 1));
+        HashTable enumerating = HashTable.OrdinaryBuilder.newInstance(SearchTechniques.ENUMERATE).build();
+        enumerating.put("one", new Point(3, 3));
         returnPoint = enumerating.get("one");
         enumerating.remove("one");
+
+        System.out.println(returnPoint.toString());
     }
 }

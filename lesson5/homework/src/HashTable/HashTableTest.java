@@ -4,16 +4,21 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class HashTableTest {
-    SearchTechniques searchTechnique;
+
+    private final HashTable test;
 
     public HashTableTest(SearchTechniques techniques) {
-        searchTechnique = techniques;
+        if (techniques == SearchTechniques.LINEAR) {
+            test = HashTable.LinearBuilder.newInstance(SearchTechniques.LINEAR).setStep(31).build();
+        } else if (techniques == SearchTechniques.QUADRATIC) {
+            test = HashTable.OrdinaryBuilder.newInstance(SearchTechniques.QUADRATIC).build();
+        } else {
+            test = HashTable.OrdinaryBuilder.newInstance(SearchTechniques.ENUMERATE).build();
+        }
     }
 
     public void tests() throws Exception {
-        if (!putWithSameKeys()) {
-            throw new Exception("putWithSameKeys() problem!");
-        } else if (!checkFunctionsAfterRemoval()) {
+        if (!checkFunctionsAfterRemoval()) {
             throw new Exception("checkFunctionsAfterRemoval() problem!");
         } else if (!getSimple()) {
             throw new Exception("getSimple() problem!");
@@ -30,15 +35,8 @@ public class HashTableTest {
         }
     }
 
-    boolean putWithSameKeys() {
-        OrdinaryHashMap test = new OrdinaryHashMap(searchTechnique);
-        test.put("one", new Point(1, 1));
-        test.put("one", new Point(3, 3));
-        return test.getNumberOfElements() == 1;
-    }
-
     boolean checkFunctionsAfterRemoval() {
-        OrdinaryHashMap test = new OrdinaryHashMap(searchTechnique);
+
         test.put("one", new Point(1, 1));
         test.put("three", new Point(2, 2));
         test.remove("one");
@@ -52,7 +50,7 @@ public class HashTableTest {
     }
 
     boolean getSimple() {
-        OrdinaryHashMap test = new OrdinaryHashMap(searchTechnique);
+
         test.put("one", new Point(1, 1));
         test.put("three", new Point(2, 2));
         if (Objects.isNull(test.get("one"))) {
@@ -67,7 +65,7 @@ public class HashTableTest {
     }
 
     boolean getSafeSimple() {
-        OrdinaryHashMap test = new OrdinaryHashMap(searchTechnique);
+
         test.put("one", new Point(1, 1));
         test.put("three", new Point(2, 2));
         if (Objects.isNull(test.getSafe("one"))) {
@@ -82,7 +80,7 @@ public class HashTableTest {
     }
 
     boolean getOrElseSimple() {
-        OrdinaryHashMap test = new OrdinaryHashMap(searchTechnique);
+
         test.put("one", new Point(-1, 1));
         test.put("three", new Point(2, 2));
         test.put("low", new Point(-100, 100));
@@ -99,7 +97,6 @@ public class HashTableTest {
     }
 
     boolean containsOrNotContains() {
-        OrdinaryHashMap test = new OrdinaryHashMap(searchTechnique);
         test.put("one", new Point(-1, 1));
         if (!test.contains("one")) {
             return false;
@@ -109,7 +106,6 @@ public class HashTableTest {
     }
 
     boolean remove() {
-        OrdinaryHashMap test = new OrdinaryHashMap(searchTechnique);
         String[] keys = new String[]{"one", "three"};
         test.put(keys[0], new Point(-1, 1));
         test.put(keys[1], new Point(2, 2));
@@ -120,11 +116,7 @@ public class HashTableTest {
     }
 
     boolean removeAndResizeAndGet() {
-        HashTable test = new HashTable(searchTechnique);
-        if (searchTechnique == SearchTechniques.LINEAR) {
-            test.setStep(31);
-        }
-
+        test.clear();
         String[] keys = new String[50];
         Point[] values = new Point[50];
 
