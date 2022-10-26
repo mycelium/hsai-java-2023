@@ -8,13 +8,21 @@ import lesson6.homework.src.Search.*;
 
 
 public class HashMap {
-    HashMapElement[] table;
-    double loadFactor;
-    int capacity;
-    int size;
-    AbstractSearch searchStrategy;
+    private HashMapElement[] table;
+    private double loadFactor;
+    private int capacity;
+    private int size;
+    private AbstractSearch searchStrategy;
 
     private HashMap() {
+    }
+
+    public int getSize() {
+        return this.size;
+    }
+
+    public int getCapacity() {
+        return this.capacity;
     }
 
     public static LinearBuilder linearBuilder() {
@@ -31,16 +39,26 @@ public class HashMap {
 
     abstract public class Builder {
         private Builder() {
+            HashMap.this.loadFactor = 0.75;
+            HashMap.this.capacity = 10;
         }
 
+
         public HashMap build() {
+            HashMap.this.size = 0;
+            HashMap.this.table = new HashMapElement[HashMap.this.capacity];
             return HashMap.this;
         }
+
+        abstract public Builder setCapacity(int capacity);
+
+        abstract public Builder setLoadFactor(int loadFactor);
 
     }
 
     public class LinearBuilder extends Builder {
         private LinearBuilder() {
+            super();
             HashMap.this.searchStrategy = new LinearSearch();
         }
 
@@ -62,6 +80,7 @@ public class HashMap {
 
     public class ConsistentBuilder extends Builder {
         private ConsistentBuilder() {
+            super();
             HashMap.this.searchStrategy = new ConsistentSearch();
         }
 
@@ -78,6 +97,7 @@ public class HashMap {
 
     public class QuadraticBuilder extends Builder {
         private QuadraticBuilder() {
+            super();
             HashMap.this.searchStrategy = new QuadraticSearch();
         }
 
@@ -130,11 +150,7 @@ public class HashMap {
     }
 
     public Optional<Point> getSafe(String key) {
-        int index = this.searchStrategy.search(key, this.table, this.capacity);
-        if (index == -1) {
-            return Optional.empty();
-        }
-        return Optional.ofNullable(this.table[index].getValue());
+        return Optional.ofNullable(this.get(key));
     }
 
     public Point getOrElse(String key, Point def) {

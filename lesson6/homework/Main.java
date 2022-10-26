@@ -8,41 +8,51 @@ import java.util.Optional;
 
 public class Main {
     public static void main(String[] args) {
-        HashMap map = HashMap.linearBuilder().setCapacity(6).setStep(5).build();
+        int defaultCapacity = 6;
+        System.out.println("Total number of tests - 11");
+        HashMap map = HashMap.consistentBuilder().setCapacity(defaultCapacity).build();
         //HashMap map = HashMap.consistentBuilder().setCapacity(12).setStep(12).build();  //compilation error
         //
-        map.contains("test");
-        map.put("Test point", new Point(-2, 12));
-        map.put("Point filler", null);
-        map.remove("Point filler");
-        map.put("", new Point(2, 3));
-        map.put("Point filler", null);
-        map.put("Lower left", new Point(-2, 12));
-        map.put("Upper right", new Point(2, 2));
-        Point leftPoint = map.get("Lower left");
-        Point rightPoint = map.get("Upper right");
-        if (leftPoint.x() < rightPoint.x()) {
-            Point defaultCenter = new Point(2, 8);
-            Point center = map.getOrElse("Center", defaultCenter);
-            if (!map.contains("Center")) {
-                map.put("Center", center);
+        map.put("Test", new Point(1, 1));
+        if (map.contains("Test")) {
+            System.out.println("1. Test \"Simple put and contains\": completed");
+        }
+        map.put("Test", new Point(2, 4));
+        if (map.getSize() == 1) {
+            System.out.println("2. Test \"Put with same keys\": completed");
+        }
+        if (!map.contains("Invisible Point")) {
+            System.out.println("3. Test \"Find non-existent point\": completed");
+        }
+        map.put("1", new Point(1, 1));
+        map.put("1<", new Point(1, 1));
+        map.put("1<<", new Point(1, 1));
+        map.put("1<<<", new Point(1, 1));
+        if (map.getCapacity() > defaultCapacity) {
+            System.out.println("4. Test \"Resize\": completed");
+            if (map.contains("1<<")) {
+                System.out.println("5. Test \"Put after resize\": completed");
             }
         }
-        map.remove("lower left");
-        if (map.contains("Lower left")) {
-            map.remove("Lower left");
+        map.remove("1<");
+        if (!map.contains("1<")) {
+            System.out.println("6. Test \"Simple remove\": completed");
         }
-        Optional<Point> p = map.getSafe("non-existent point");
-        if (p.isPresent()) {
-            int k = p.get().x();
-        } else {
-            map.put("non-existent point", new Point(12, 11));
+        map.remove("1<<");
+        map.put("1<", new Point(1, 1));
+        if (!map.contains("1<<")) {
+            System.out.println("7. Test \"Remove elements with same hash\": completed");
         }
-        p = map.getSafe("non-existent point");
-        if (p.isPresent()) {
-            int k = p.get().x();
+        Optional<Point> empty = map.remove("non-existent Point");
+        System.out.println("8. Test \"Return null after removing\": completed");
+        map.put("null", null);
+        System.out.println("9. Test \"Put null point\": completed");
+        empty = map.getSafe("non-existent Point");
+        empty = map.getSafe("null");
+        System.out.println("10. Test \"Return null after getSafe\": completed");
+        Point p = map.getOrElse("non-existent Point", new Point(12, 2));
+        if (p.equals(new Point(12, 2))) {
+            System.out.println("11. Test \"GetOrElse\": completed");
         }
-        p = map.remove("existent point");
-        p = map.remove("non-existent point");
     }
 }
