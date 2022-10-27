@@ -1,9 +1,9 @@
 package com.hsai;
 
+import java.util.Optional;
+
 import com.hsai.hashmap.*;
 import com.hsai.point.Point;
-
-import java.util.Optional;
 
 public class Test {
     public static void runTest(HashMap map) {

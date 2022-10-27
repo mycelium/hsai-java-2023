@@ -128,7 +128,6 @@ public class HashMap implements HashMapInterface {
             return index;
         }
     }
-
     // !Strategy handlers
 
     // Builder class and build method:
@@ -170,7 +169,6 @@ public class HashMap implements HashMapInterface {
     public static Builder builder() {
         return new HashMap().new Builder();
     }
-
     // !Builder class and build method
 
     // init blocks and constructors:
@@ -202,7 +200,7 @@ public class HashMap implements HashMapInterface {
         }
 
         index = getHash(key);
-        while (table[index] != Node.nil){
+        while (table[index] != Node.nil) {
             index = handler.findIndexToPut(key);
             if (!(index < capacity)) {
                 doubleCapacityAndRehash();
@@ -217,7 +215,6 @@ public class HashMap implements HashMapInterface {
     public Point get(String key) {
         return handler.findWithStrategy(key);
     }
-
 
     public Point getOrElse(String key, Point defaultValue) {
         Point point = get(key);
