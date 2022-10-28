@@ -1,7 +1,6 @@
 package lesson5.homework.HashMap;
 
 import lesson5.homework.SearchStrategies.*;
-
 import java.util.Optional;
 
 public class CKHashMap {
