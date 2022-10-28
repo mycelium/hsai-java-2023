@@ -59,8 +59,10 @@ public class MyHashMap implements MyHashInterface{
             hashTable[pos] = newElement;
         }
         else{
-            extend();
-            pos = searcher.findPosToPut(key, hashTable);
+            while(pos==-1) {
+                extend();
+                pos = searcher.findPosToPut(key, hashTable);
+            }
             hashTable[pos] = new MyHashElement(key, value);
         }
     }
