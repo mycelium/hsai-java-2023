@@ -140,7 +140,7 @@ public class Parser {
         for (int i = 0; i < tokens.length; i++) {
             int number = 0;
             for (int j = tokens[i].length() - 1; j >= 0; j--) {
-                int digit = Character.getNumericValue(tokens[i].charAt(j));
+                int digit = codesToNumbers.get(String.valueOf(tokens[i].charAt(j)));
                 number += digit * (int) Math.pow(digit, j);
             }
             if (number <= 255) {
