@@ -139,9 +139,9 @@ public class Parser {
 
         for (int i = 0; i < tokens.length; i++) {
             int number = 0;
-            for (int j = tokens[i].length() - 1; j >= 0; j--) {
+            for (int j = 0; j < tokens[i].length(); j++) {
                 int digit = codesToNumbers.get(String.valueOf(tokens[i].charAt(j)));
-                number += digit * (int) Math.pow(numeralSystem, j);
+                number += digit * (int) Math.pow(numeralSystem, tokens[i].length() - 1 -j);
             }
             if (number <= 255) {
                 validatedBytes.add((byte) number);
