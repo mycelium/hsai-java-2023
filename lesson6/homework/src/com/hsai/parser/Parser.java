@@ -141,7 +141,7 @@ public class Parser {
             int number = 0;
             for (int j = tokens[i].length() - 1; j >= 0; j--) {
                 int digit = codesToNumbers.get(String.valueOf(tokens[i].charAt(j)));
-                number += digit * (int) Math.pow(digit, j);
+                number += digit * (int) Math.pow(numeralSystem, j);
             }
             if (number <= 255) {
                 validatedBytes.add((byte) number);
