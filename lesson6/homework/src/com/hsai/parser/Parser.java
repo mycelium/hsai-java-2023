@@ -79,7 +79,7 @@ public class Parser {
         StringBuilder result = new StringBuilder(str);
 
         for (int i = keys.length - 1; i >= 0; i--) {
-            result = sbReplaceAll(result, keys[i], naturalToCodes.get(keys[i]).toString());
+            result = sbReplaceAll(result, keys[i], naturalToCodes.get(keys[i]));
         }
 
         return result.toString();
