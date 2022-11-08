@@ -39,9 +39,7 @@ public class Converter {
     }
 
     static private int formNumber(int[] array, int index, int system) {
-        int result = 0;
-        int count = 0;
-        for (int i = 0; i < index; i++) {
+        int result = 0;for (int i = 0; i < index; i++) {
             result = result + array[i] * (int) Math.pow(system, i);
 
         }
@@ -86,6 +84,7 @@ public class Converter {
                     } else {
                         return 999;     // such digit cannot be in this calculus system
                     }
+                    sb.setLength(0);
                 } else {
                     int number = stringToInt(sb.toString());
                     if (number >= calculusSystem) {
