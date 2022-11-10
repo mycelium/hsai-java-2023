@@ -1,30 +1,22 @@
 package lesson5.homework.src;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
 import java.util.List;
+
+import lesson5.homework.src.exeptions.*;
 
 public class BytesReader {
 
-    static public String readAllFile(String fileName) {
-        String s;
-        StringBuilder sb = new StringBuilder();
-        FileReader ifstream = null;
-        Exception ex = null;
+    static public String readAllFile(String fileName) throws NoSuchFileException {
         try {
-            ifstream = new FileReader(fileName);
-            BufferedReader reader = new BufferedReader(ifstream);
-            while ((s = reader.readLine()) != null) {
-                sb.append(s);
-            }
-            reader.close();
-            ifstream.close();
-        } catch (IOException e) {
-            System.err.println("Error: " + e);
+            String fileContent = Files.readString(Path.of(fileName));
+            return fileContent;
+        } catch (Exception e) {
+            throw new NoSuchFileException(fileName);
         }
-
-        return sb.toString();
     }
 
 
@@ -35,7 +27,11 @@ public class BytesReader {
             arrayOfBytes[i] = b;
             i++;
         }
-        String s = new String(arrayOfBytes, Converter.stringToEncoding(encoding));
-        System.out.println(s);
+        try {
+            String s = new String(arrayOfBytes, Converter.stringToEncoding(encoding));
+            System.out.println(s);
+        } catch (Exception e) {
+            System.err.println(e);
+        }
     }
 }

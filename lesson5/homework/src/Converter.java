@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 
+import lesson5.homework.src.exeptions.*;
+
 public class Converter {
 
     static private Map<String, Integer> digits = new HashMap();
@@ -39,7 +41,8 @@ public class Converter {
     }
 
     static private int formNumber(int[] array, int index, int system) {
-        int result = 0;for (int i = 0; i < index; i++) {
+        int result = 0;
+        for (int i = 0; i < index; i++) {
             result = result + array[i] * (int) Math.pow(system, i);
 
         }
@@ -103,7 +106,7 @@ public class Converter {
         return Converter.formNumber(arrayOfDigits, index, calculusSystem);
     }
 
-    static public Charset stringToEncoding(String str) {
+    static public Charset stringToEncoding(String str) throws InvalidCharsetExeption {
         switch (str) {
             case "UTF-16":
                 return StandardCharsets.UTF_16;
@@ -111,7 +114,8 @@ public class Converter {
                 return StandardCharsets.UTF_8;
             case "ASCII":
                 return StandardCharsets.US_ASCII;
+            default:
+                throw new InvalidCharsetExeption(str);
         }
-        return null;
     }
 }
