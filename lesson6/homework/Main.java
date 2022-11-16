@@ -9,8 +9,7 @@ import java.util.Optional;
 public class Main {
     public static void main(String[] args) {
         int defaultCapacity = 6;
-        System.out.println("Total number of tests - 11");
-        HashMap map = HashMap.consistentBuilder().setCapacity(defaultCapacity).build();
+        System.out.println("Total number of tests - 11");HashMap map = HashMap.linearBuilder().setStep(12).setCapacity(defaultCapacity).setLoadFactor(12).build();
         //HashMap map = HashMap.consistentBuilder().setCapacity(12).setStep(12).build();  //compilation error
         //
         map.put("Test", new Point(1, 1));
