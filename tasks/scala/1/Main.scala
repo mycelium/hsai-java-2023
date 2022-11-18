@@ -1,4 +1,5 @@
 package recfun
+
 import common._
 
 object Main {
@@ -17,15 +18,23 @@ object Main {
   def pascal(c: Int, r: Int): Int = c match {
     case 0 => 1
     case x if x == r => 1
-    case _ => pascal(c, r-1) + pascal(c-1,r-1)
+    case _ => pascal(c, r - 1) + pascal(c - 1, r - 1)
   }
 
   /**
    * Exercise 2 Parentheses Balancing
    */
   def balance(chars: List[Char]): Boolean = {
-    return false
+    val closeIndex: Int = chars.indexOf(')')
+    val openIndex:Boolean = closeIndex > 0
+    if (chars.isEmpty)
+      true
+    else if (closeIndex != -1 & openIndex)
+      balance(chars.slice(0, closeIndex - 1) ++ chars.slice(closeIndex + 1, chars.length))
+    else
+      false
   }
+
 
   /**
    * Exercise 3 Counting Change
@@ -35,6 +44,12 @@ object Main {
    * 2 and 3: 2+3.
    */
   def countChange(money: Int, coins: List[Int]): Int = {
-      return 5
+    val counts: List[Int] = coins.map(cur => money - cur match {
+      case 0 => 1
+      case x if x > 0 => countChange(x, coins.slice(coins.indexOf(cur),coins.length))
+      case x if x < 0 => 0
+    })
+
+    counts.reduce(_ + _)
   }
 }
