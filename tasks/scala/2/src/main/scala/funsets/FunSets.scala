@@ -20,40 +20,40 @@ object FunSets {
   /**
    * Returns the set of the one given element.
    */
-    def singletonSet(elem: Int): MySet = k => k == elem
+  def singletonSet(elem: Int): MySet = k => k == elem
 
 
   /**
    * Returns the union of the two given sets,
    * the sets of all elements that are in either `s` or `t`.
    */
-    def union(s: MySet, t: MySet): MySet = k => t match {
-      case Nil => s(k)
-      case _ => s(k) | t(k)
-    }
+  def union(s: MySet, t: MySet): MySet = k => t match {
+    case Nil => s(k)
+    case _ => s(k) | t(k)
+  }
 
   /**
    * Returns the intersection of the two given sets,
    * the set of all elements that are both in `s` and `t`.
    */
-    def intersect(s: MySet, t: MySet): MySet = k => t match {
-      case Nil => s(k)
-      case _ => s(k) & t(k)
-    }
+  def intersect(s: MySet, t: MySet): MySet = k => t match {
+    case Nil => s(k)
+    case _ => s(k) & t(k)
+  }
 
   /**
    * Returns the difference of the two given sets,
    * the set of all elements of `s` that are not in `t`.
    */
-    def diff(s: MySet, t: MySet): MySet = k => t match {
-      case Nil => s(k)
-      case _ => s(k) & !t(k)
-    }
+  def diff(s: MySet, t: MySet): MySet = k => t match {
+    case Nil => s(k)
+    case _ => s(k) & !t(k)
+  }
 
   /**
    * Returns the subset of `s` for which `p` holds.
    */
-    def filter(s: MySet, p: Int => Boolean): MySet = k => s(k) & p(k)
+  def filter(s: MySet, p: Int => Boolean): MySet = k => s(k) & p(k)
 
 
   /**
@@ -64,12 +64,13 @@ object FunSets {
   /**
    * Returns whether all bounded integers within `s` satisfy `p`.
    */
-    def forall(s: MySet, p: Int => Boolean): Boolean = {
+  def forall(s: MySet, p: Int => Boolean): Boolean = {
     def iter(a: Int): Boolean = {
       if (a > bound) true
-      else if (!p(a) & contains(s,a)) false
+      else if (!p(a) & contains(s, a)) false
       else iter(a + 1)
     }
+
     iter(-bound)
   }
 
@@ -77,19 +78,21 @@ object FunSets {
    * Returns whether there exists a bounded integer within `s`
    * that satisfies `p`.
    */
-    def exists(s: MySet, p: Int => Boolean): Boolean = ! forall(s, k => !p(k))
+  def exists(s: MySet, p: Int => Boolean): Boolean = !forall(s, k => !p(k))
 
   /**
    * Returns a set transformed by applying `f` to each element of `s`.
    */
-    def map(s: MySet, f: Int => Int): MySet = {
-      def iter(a: Int): MySet = {
-        if (a > bound) Nil
-        else if (contains(s,a)) union(singletonSet(f(a)),iter(a + 1))
-        else iter(a + 1)
-      }
-      iter(-bound)
+  def map(s: MySet, f: Int => Int): MySet = {
+    def iter(a: Int): MySet = {
+      if (a > bound) Nil
+      else if (contains(s, a)) union(singletonSet(f(a)), iter(a + 1))
+      else iter(a + 1)
     }
+
+    iter(-bound)
+  }
+
   /**
    * Displays the contents of a set
    */
