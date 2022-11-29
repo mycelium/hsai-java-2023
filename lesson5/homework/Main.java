@@ -1,5 +1,4 @@
 package lesson5.homework;
-
 import lesson5.homework.HashMap.*;
 import lesson5.homework.SearchStrategies.*;
 
@@ -7,7 +6,6 @@ import java.util.Optional;
 
 public class Main {
     public static void main(String[] args) {
-
         System.out.println("Testing incorrect constructors:");
         CKHashMap errmap;
         try {
