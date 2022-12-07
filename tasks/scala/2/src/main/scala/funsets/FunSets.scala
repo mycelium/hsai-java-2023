@@ -29,7 +29,7 @@ object FunSets {
    */
   def union(s: MySet, t: MySet): MySet = k => t match {
     case Nil => s(k)
-    case _ => s(k) | t(k)
+    case _ => s(k) || t(k)
   }
 
   /**
@@ -38,7 +38,7 @@ object FunSets {
    */
   def intersect(s: MySet, t: MySet): MySet = k => t match {
     case Nil => s(k)
-    case _ => s(k) & t(k)
+    case _ => s(k) && t(k)
   }
 
   /**
@@ -47,13 +47,13 @@ object FunSets {
    */
   def diff(s: MySet, t: MySet): MySet = k => t match {
     case Nil => s(k)
-    case _ => s(k) & !t(k)
+    case _ => s(k) && !t(k)
   }
 
   /**
    * Returns the subset of `s` for which `p` holds.
    */
-  def filter(s: MySet, p: Int => Boolean): MySet = k => s(k) & p(k)
+  def filter(s: MySet, p: Int => Boolean): MySet = k => s(k) && p(k)
 
 
   /**
@@ -67,7 +67,7 @@ object FunSets {
   def forall(s: MySet, p: Int => Boolean): Boolean = {
     def iter(a: Int): Boolean = {
       if (a > bound) true
-      else if (!p(a) & contains(s, a)) false
+      else if (!p(a) && contains(s, a)) false
       else iter(a + 1)
     }
 
