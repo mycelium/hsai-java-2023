@@ -1,24 +1,98 @@
 package lesson5.homework;
+import lesson5.homework.HashMap.*;
+import lesson5.homework.SearchStrategies.*;
 
-import lesson5.homework.factories.LinearSolver;
-import lesson5.homework.factories.QuadraticSolver;
+import java.util.Optional;
 
 public class Main {
     public static void main(String[] args) {
+        System.out.println("Testing incorrect constructors:");
+        CKHashMap errmap;
+        try {
+            errmap = new CKHashMap(StrategyNames.UNUSED);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+        try {
+            errmap = new CKHashMap(StrategyNames.LINEAR, -2);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
 
-        Hashmap hm = new Hashmap(20, new QuadraticSolver());
-//        Hashmap hm = new Hashmap(20, new LinearSolver(1));
+        Optional<Point> point;
+        System.out.println();
+        System.out.println("Testing linear strategy:");
+        CKHashMap map = new CKHashMap(StrategyNames.LINEAR, 3);
 
-        hm.put("1", new Point(1,1));
-        hm.put("2", new Point(1,0));
-        hm.put("3", new Point(0,0));
-        hm.put("4", new Point(0,1));
+        map.put("Hello", new Point(3, 4));
+        map.put("World", new Point(6, 9));
+        map.put("Plant", new Point(3, 3));
+        map.put("House", new Point(-1, -2));
+        map.put("Letter", new Point(3, 0));
+        map.put("Letter", new Point(0, 3));
+        map.put("Sunset", new Point(11, -2));
+        map.PrintMap();
+        System.out.println(map.contains("Letter"));
+        System.out.println(map.contains("Fence"));
+        System.out.println(map.contains("Hello"));
 
-        System.out.println(hm.get("4"));
-        System.out.println(hm.getOrElse("5", new Point(5,5)));
-        System.out.println(hm.contains("5"));
-        System.out.println(hm.remove("3"));
-        System.out.println(hm.getSafe("3"));
+        point = map.getSafe("Letter");
+        System.out.println("Value of Key Letter:" + point.get().x() + " " + point.get().y());
 
+        map.remove("Pigeon");
+        map.remove("Letter");
+        map.remove("House");
+        map.PrintMap();
+        System.out.println("Map contains key Letter? " + map.contains("Letter"));
+
+        System.out.println();
+        System.out.println("Testing sequential strategy:");
+        map = new CKHashMap(StrategyNames.SEQUENTIAL);
+
+        map.put("Hello", new Point(3, 4));
+        map.put("World", new Point(6, 9));
+        map.put("Plant", new Point(3, 3));
+        map.put("House", new Point(-1, -2));
+        map.put("Letter", new Point(3, 0));
+        map.put("Letter", new Point(0, 3));
+        map.put("Sunset", new Point(11, -2));
+        map.PrintMap();
+        System.out.println(map.contains("Letter"));
+        System.out.println(map.contains("Fence"));
+        System.out.println(map.contains("Hello"));
+
+        point = map.getSafe("Letter");
+        System.out.println("Value of Key Letter:" + point.get().x() + " " + point.get().y());
+
+        map.remove("Pigeon");
+        map.remove("Letter");
+        map.remove("House");
+        map.PrintMap();
+        System.out.println("Map contains key Letter? " + map.contains("Letter"));
+
+        System.out.println();
+        System.out.println("Testing quadratic strategy:");
+        map = new CKHashMap(StrategyNames.QUADRATIC);
+
+        map.put("Hello", new Point(3, 4));
+        map.put("World", new Point(6, 9));
+        map.put("Plant", new Point(3, 3));
+        map.put("House", new Point(-1, -2));
+        map.put("Letter", new Point(3, 0));
+        map.put("Letter", new Point(0, 3));
+        map.put("Sunset", new Point(11, -2));
+        map.PrintMap();
+        System.out.println(map.contains("Letter"));
+        System.out.println(map.contains("Fence"));
+        System.out.println(map.contains("Hello"));
+
+        point = map.getSafe("Letter");
+        System.out.println("Value of Key Letter:" + point.get().x() + " " + point.get().y());
+
+        map.remove("Pigeon");
+        map.remove("Letter");
+        map.remove("House");
+        map.PrintMap();
+        System.out.println("Map contains key Letter? " + map.contains("Letter"));
     }
 }
