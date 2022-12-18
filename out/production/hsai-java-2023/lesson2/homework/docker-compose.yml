@@ -1,0 +1,9 @@
+services:
+  testApp:
+    deploy:
+      replicas: 18
+    ports:
+      - "30002-30021:5005"
+    image: hsai-java-2023-lesson2:latest
+    environment:
+      - "DEBUG_PORT=5005"
