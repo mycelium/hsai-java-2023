@@ -9,8 +9,8 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
         try {
-            Map<String,Object> data = BasicConverter.read("C:\\Users\\fedot\\IdeaProjects\\hsai-java-2023-4\\lesson3\\homework\\data.json", "json");
-            BasicConverter.write("C:\\Users\\fedot\\IdeaProjects\\hsai-java-2023-4\\lesson3\\homework\\output.toml", "toml", data);
+            Map<String,Object> data = BasicConverter.read(args[0], args[1]);
+            BasicConverter.write(args[2], args[3], data);
         } catch (InvalidFormatExeption e) {
             System.err.println(e);
         }
