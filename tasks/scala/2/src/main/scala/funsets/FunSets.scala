@@ -73,14 +73,7 @@ object FunSets {
   /**
    * Returns a set transformed by applying `f` to each element of `s`.
    */
-    def map(s: Set, f: Int => Int): Set = {
-      def iter(a: Int, set: Set): Set = {
-        if (!s(a)) iter(a + 1, set)
-        else if (a > bound) set
-        else iter(a + 1, union(set, i => i == f(a)))
-      }
-      iter(-bound, set = i => false)
-    }
+    def map(s: Set, f: Int => Int): Set = (i: Int) => exists(s, (e: Int) => i == f(e))
   /**
    * Displays the contents of a set
    */
