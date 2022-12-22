@@ -10,6 +10,7 @@ object Main {
         print(pascal(col, row) + " ")
       println()
     }
+    println(balance(List('a',')')))
   }
 
   /**
@@ -26,11 +27,16 @@ object Main {
    */
   def balance(chars: List[Char]): Boolean = {
     val closeIndex: Int = chars.indexOf(')')
-    val openIndex:Boolean = closeIndex > 0
+    val openIndex: Int = chars.indexOf('(')
     if (chars.isEmpty)
       true
-    else if (closeIndex != -1 & openIndex)
-      balance(chars.slice(0, closeIndex - 1) ++ chars.slice(closeIndex + 1, chars.length))
+    else if (closeIndex == -1 && openIndex == -1)
+      true
+    else if (closeIndex > -1 && openIndex > -1)
+      if (closeIndex < openIndex)
+        false
+      else
+        balance(chars.slice(0, openIndex) ++ chars.slice(openIndex + 1, closeIndex) ++ chars.slice(closeIndex + 1, chars.length))
     else
       false
   }
