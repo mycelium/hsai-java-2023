@@ -1,0 +1,13 @@
+[[arr]]
+string = "string"
+number = 1
+boolean = true
+array = [ 1, "string", true, { key = 22 } ]
+
+[arr.object]
+string = "string"
+
+
+
+
+
