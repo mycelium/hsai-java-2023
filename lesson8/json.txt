@@ -1,0 +1,21 @@
+{ "arr":[
+  {
+    "string": "string",
+    "number": 1,
+    "null": null,
+    "boolean": true,
+    "array": [
+      1,
+      "string",
+      true,
+      null,
+      {
+        "key": 22
+      }
+    ],
+    "object": {
+      "string": "string"
+    }
+  }
+]
+}
