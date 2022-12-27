@@ -1,0 +1,14 @@
+[[arr]]
+number = 1
+boolean = true
+string = "string"
+null = "null"
+array = [ 1 , "string" , true , "null" , { key = 22 } ]
+
+[object]
+string = "string"
+
+
+
+
+
