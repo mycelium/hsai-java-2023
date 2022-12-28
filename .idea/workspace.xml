@@ -5,6 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ce3029f-c895-41f7-b846-685745547190" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Base64/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Base64/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Base64/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Base64/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Base64/Base64.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Base64/out/production/Base64/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Base64/out/production/Base64/task13" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Base64/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Base64/src/task13" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exam/MyTry/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exam/examApp/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/exam/examApp/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lesson5/Lesson5.pptx" beforeDir="false" />
@@ -55,7 +65,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/ExpWithJava/Base64",
+    "last_opened_file_path": "D:/ExpWithJava/hsai-java-2023/Base64",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
