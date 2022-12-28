@@ -10,6 +10,7 @@ public class Main {
             if (counter % 60 == 0) {
                 System.out.println("Another minute passed");
             }
+
         }
 
     }
