@@ -1,1 +1,6 @@
-/.idea
+.idea/
+.idea/workspace.xml
+exam/exam.iml
+hsai-java-2023.iml
+lesson2/lesson2.iml
+out/
