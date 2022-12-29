@@ -1,0 +1,10 @@
+{ "arr":[
+  {
+    "string": "string"
+    ],
+    "object": {
+      "string": "string"
+    }
+  }
+]
+}
