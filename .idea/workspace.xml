@@ -5,17 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ce3029f-c895-41f7-b846-685745547190" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lesson5/homework/Hashmap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lesson5/homework/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lesson5/homework/Point.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lesson5/homework/factories/CollisionSolver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lesson5/homework/factories/LinearSolver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lesson5/homework/factories/QuadraticSolver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lesson5/homework/strategies/LinearStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lesson5/homework/strategies/ProbingStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lesson5/homework/strategies/QuadraticStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Base64/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Base64/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Base64/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Base64/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Base64/Base64.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Base64/out/production/Base64/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Base64/out/production/Base64/task13" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Base64/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Base64/src/task13" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exam/MyTry/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exam/examApp/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/exam/examApp/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson5/Lesson5.pptx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson5/homework/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson5/homework/Hashmap.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson5/homework/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson5/homework/Point.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson5/homework/factories/CollisionSolver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson5/homework/factories/LinearSolver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson5/homework/factories/QuadraticSolver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson5/homework/strategies/LinearStrategy.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson5/homework/strategies/ProbingStrategy.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson5/homework/strategies/QuadraticStrategy.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +46,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="2bd523ad52bdba183e804c8055675557befb009b" />
+        <entry key="$PROJECT_DIR$" value="exam" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -49,10 +61,11 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Git.Branch.Popup.ShowAllRemotes": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Адам/IdeaProjects/hsai-java-2023",
+    "last_opened_file_path": "D:/ExpWithJava/hsai-java-2023/Base64",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
@@ -71,7 +84,7 @@
       <recent name="lesson5.homework.strategies" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lesson5.homework.Main" />
       <module name="hsai-java-2023" />
@@ -98,6 +111,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Unnamed" type="Remote" nameIsGenerated="true">
+      <module name="hsai-java-2023" />
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" />
+      <option name="HOST" value="185.216.204.168" />
+      <option name="PORT" value="30003" />
+      <option name="AUTO_RESTART" value="false" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="30003" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Remote JVM Debug.Unnamed" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
@@ -135,7 +166,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="00101_Rashi-Adam" />
+                        <option value="exam_ChoboZilla" />
                       </list>
                     </value>
                   </entry>
@@ -146,5 +177,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/exam/examApp/src/Main.java</url>
+          <line>8</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
